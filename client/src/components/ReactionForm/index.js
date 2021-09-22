@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import {useMutation} from "@apollo/client"
 import { ADD_REACTION } from "../../utils/mutations";
 
 const ReactionForm = ({ thoughtId }) => {
@@ -18,7 +19,7 @@ const ReactionForm = ({ thoughtId }) => {
 
     try {
       await addReaction({
-        variables: { reactionBody, thoughtId },
+        variables: { reactionBody, thoughtId }
       });
 
       setBody("");
@@ -38,7 +39,7 @@ const ReactionForm = ({ thoughtId }) => {
       </p>
       <form
         className="flex-row justify-center justify-space-between-md align-stretch"
-        onSubmit={onSubmit}
+        onSubmit={handleFormSubmit}
       >
         <textarea
           placeholder="Leave a reaction to this thought..."
